@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -19,12 +20,22 @@ namespace web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<SpaceEvent> AllSpaceEvents()
         {
-            if (IDB == null || IDB.Data == null)
-            {
-                ReadData();
-            }
+            if (IDB == null || IDB.Data == null) { ReadData(); }
 
             return IDB != null ? IDB.Data : null;
+        }
+
+        [HttpGet("[action]/{month}")]
+        public IEnumerable<SpaceEvent> SpaceEventsForMonth(int month)
+        {
+            if (IDB == null || IDB.Data == null) { ReadData(); }
+
+            if (IDB != null && IDB.Data != null)
+            {
+                return IDB.Data.Where(i => i.Month == month);
+            }
+
+            return null;
         }
 
         protected void ReadData()
