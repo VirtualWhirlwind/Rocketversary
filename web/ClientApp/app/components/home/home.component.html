@@ -1,3 +1,14 @@
+<h1>Space Events For: {{ currentMonthName }}</h1>
+<button (click)="decrementMonth()">Previous</button>
+<button (click)="resetMonth()">Current</button>
+<button (click)="incrementMonth()">Next</button>
+
+<p *ngIf="!spaceEvents"><em>Loading...</em></p>
+
+<ul *ngIf="spaceEvents">
+    <li *ngFor="let spaceEvent of spaceEvents">{{ spaceEvent.genericDate }} : {{ spaceEvent.name }}</li>
+</ul>
+<!--
 <h1>Hello, world!</h1>
 <p>Welcome to your new single-page application, built with:</p>
 <ul>
@@ -14,3 +25,4 @@
     <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular app will be rebuilt and a new instance injected into the page.</li>
     <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>
 </ul>
+-->

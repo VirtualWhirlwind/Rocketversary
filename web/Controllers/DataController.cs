@@ -66,7 +66,7 @@ namespace web.Controllers
             public int Year { get { return Date.Year; } }
             public int Month { get { return Date.Month; } }
             public int Day { get { return Date.Day; } }
-            public string GenericDate { get { return Date.ToString("MM-dd"); } }
+            public string GenericDate { get { return Date.ToString("yyyy-MM-dd"); } }
         }
     }
 }
