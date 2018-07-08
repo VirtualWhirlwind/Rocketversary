@@ -12,9 +12,13 @@ namespace web.Controllers
         static private InfoDb IDB { get; set; }
         private IConfiguration config { get; set; }
 
+        private SpaceEventComparer SEC { get; set; }
+
         public DataController(IConfiguration configuration)
         {
             config = configuration;
+
+            SEC = new SpaceEventComparer();
         }
 
         [HttpGet("[action]")]
@@ -46,6 +50,7 @@ namespace web.Controllers
             {
                 string DataContent = System.IO.File.ReadAllText(config.GetSection("Data").GetSection("Path").Value);
                 IDB = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoDb>(DataContent);
+                IDB.Data.Sort(SEC);
             }
             catch (Exception ex) { Console.WriteLine(ex.ToString()); }
         }
@@ -67,6 +72,33 @@ namespace web.Controllers
             public int Month { get { return Date.Month; } }
             public int Day { get { return Date.Day; } }
             public string GenericDate { get { return Date.ToString("yyyy-MM-dd"); } }
+        }
+
+        public class SpaceEventComparer : IComparer<SpaceEvent>
+        {
+            public int Compare(SpaceEvent one, SpaceEvent two)
+            {
+                if (one == null)
+                {
+                    if (two == null) { return 0; }
+                    else { return -1; }
+                }
+                else
+                {
+                    if (two == null) { return 1; }
+                    else
+                    {
+                        var Result = one.Date.CompareTo(two.Date);
+
+                        if (Result == 0)
+                        {
+                            Result = one.Name.CompareTo(two.Name);
+                        }
+
+                        return Result;
+                    }
+                }
+            }
         }
     }
 }

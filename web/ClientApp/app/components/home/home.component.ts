@@ -12,10 +12,14 @@ export class HomeComponent {
     public spaceEvents: SpaceEvent[] = [];
     public currentMonth: number = 0;
     public currentMonthName: string = 'None';
+    public dateFormat: string = 'yyyy-MM-dd';
+    public dateFormats: string[];
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         this.apiURL = baseUrl + 'api/Data/SpaceEventsForMonth/';
         this.http = http;
+
+        this.dateFormats = ["yyyy-MM-dd", "MM/dd/yyyy"];
 
         this.setMonth();
         this.getEvents();
@@ -57,6 +61,12 @@ export class HomeComponent {
 
     public resetMonth() {
         this.setMonth();
+        this.getEvents();
+    }
+
+    public setDateFormat(formatSelection: number) {
+        if (formatSelection < 0 || formatSelection >= this.dateFormats.length) { formatSelection = 0; }
+        this.dateFormat = this.dateFormats[formatSelection];
         this.getEvents();
     }
 }
