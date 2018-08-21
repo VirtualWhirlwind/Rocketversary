@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     selector: 'contact',
     templateUrl: './contact.component.html'
 })
-export class FetchDataComponent {
+export class ContactComponent {
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         // http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
         //     this.forecasts = result.json() as WeatherForecast[];
