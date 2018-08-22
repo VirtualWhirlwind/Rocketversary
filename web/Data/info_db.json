@@ -1,8 +1,8 @@
 {
 "Metadata":{"CreatedBy":"Jeremy A. Cunningham, Kennebel", "CreatedOn":"2018-06-18T16:08:28.6012462-06:00"},
 "Data":[
-	{"Name":"Sputnik 1", "Country":"Soviet Union", "Date":"1957-10-04", "URL":"https://en.wikipedia.org/wiki/Sputnik_1"},
-	{"Name":"Vostok 1 (First Human), Yuri Gagarian", "Country":"Soviet Union", "Date":"1961-04-12", "URL":"https://en.wikipedia.org/wiki/Vostok_1"},
-	{"Name":"Freedom 7 (First US Citizen), Alan Shepard", "Country":"United States of America", "Date":"1961-05-05", "URL":"https://en.wikipedia.org/wiki/Vostok_1"}
+	{"Name":"Sputnik 1", "Subtitle":"", "Country":"Soviet Union", "Date":"1957-10-04", "URL":"https://en.wikipedia.org/wiki/Sputnik_1"},
+	{"Name":"Vostok 1", "Subtitle":"Yuri Gagarian, First Human", "Country":"Soviet Union", "Date":"1961-04-12", "URL":"https://en.wikipedia.org/wiki/Vostok_1"},
+	{"Name":"Freedom 7", "Subtitle":"Alan Shepard, First US Citizen", "Country":"United States of America", "Date":"1961-05-05", "URL":"https://en.wikipedia.org/wiki/Vostok_1"}
 ]
 }

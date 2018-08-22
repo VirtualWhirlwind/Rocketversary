@@ -64,6 +64,7 @@ namespace web.Controllers
         public class SpaceEvent
         {
             public string Name { get; set; }
+            public string Subtitle { get; set; }
             public string Country { get; set; }
             public DateTime Date { get; set; }
             public string URL { get; set; }

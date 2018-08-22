@@ -17,6 +17,7 @@
     <div class="row" *ngIf="spaceEvents">
         <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents">
             <h3>{{ spaceEvent.name }}</h3>
+            <h5>{{ spaceEvent.subtitle }}</h5>
             <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
             <b>Country: </b>{{ spaceEvent.country }}<br />
             <br />
