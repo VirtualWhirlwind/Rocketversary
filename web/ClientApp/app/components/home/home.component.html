@@ -1,4 +1,4 @@
-<h1>Space Events For: {{ currentDateDisplay }}</h1>
+<h1>Space Events For: {{ currentDate | date: dateFormat }}</h1>
 <div>
     <button (click)="decrementDate()">Previous</button>
     <button (click)="resetDate()">Current</button>
@@ -11,11 +11,20 @@
 </div>
 
 <div class="container">
-    <div class="row" *ngIf="!spaceEvents">
+    <div class="row" *ngIf="!spaceEvents.previous">
         <div class="col-md-4"><p><em>Loading...</em></p></div>
     </div>
-    <div class="row" *ngIf="spaceEvents">
-        <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents">
+    <div class="row" *ngIf="spaceEvents.previous">
+        <div class="col-md-4">
+            <h3>Previous: {{ spaceEvents.previous.name }}</h3>
+            <h5>{{ spaceEvents.previous.subtitle }}</h5>
+            <b>Date: </b>{{ spaceEvents.previous.date | date: dateFormat }}<br />
+            <b>Country: </b>{{ spaceEvents.previous.country }}<br />
+            <br />
+            <a href="{{ spaceEvents.previous.url }}" target="_blank">Learn More!</a><br />
+            <button (click)="jumpTo(spaceEvents.previous.month-1, spaceEvents.previous.day)">Jump To...</button>
+        </div>
+        <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents.current">
             <h3>{{ spaceEvent.name }}</h3>
             <h5>{{ spaceEvent.subtitle }}</h5>
             <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
@@ -23,5 +32,22 @@
             <br />
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
-    </div>
+        <div class="col-md-4" *ngIf="!spaceEvents.current">
+            <h3>No Anniversaries in the Database</h3>
+            <h5>...</h5>
+            <b>Date: </b>...<br />
+            <b>Country: </b>...<br />
+            <br />
+            <a [routerLink]="['/contact']" target="_blank">Submit!</a>
+        </div>
+        <div class="col-md-4">
+                <h3>Next: {{ spaceEvents.next.name }}</h3>
+                <h5>{{ spaceEvents.next.subtitle }}</h5>
+                <b>Date: </b>{{ spaceEvents.next.date | date: dateFormat }}<br />
+                <b>Country: </b>{{ spaceEvents.next.country }}<br />
+                <br />
+                <a href="{{ spaceEvents.next.url }}" target="_blank">Learn More!</a><br />
+                <button (click)="jumpTo(spaceEvents.next.month-1, spaceEvents.next.day)">Jump To...</button>
+            </div>
+        </div>
 </div>

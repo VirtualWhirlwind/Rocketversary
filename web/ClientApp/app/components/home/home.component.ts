@@ -9,9 +9,8 @@ import { SpaceEventGroup } from '../interfaces/interfaces.component';
 export class HomeComponent {
     public apiURL: string = '';
     public http: Http;
-    public spaceEvents: SpaceEventGroup = { previous=null, previousCount=0, current=null, currentCount=0, next=null, nextCount=0 };
+    public spaceEvents: SpaceEventGroup = { };
     public currentDate: Date = new Date();
-    public currentDateDisplay: string = 'None';
     public dateFormat: string = 'yyyy-MM-dd';
     public dateFormats: string[];
 
@@ -30,12 +29,10 @@ export class HomeComponent {
             this.currentDate = new Date();
         }
         else if (withDate != this.currentDate) { this.currentDate = withDate; }
-
-        this.currentDateDisplay = this.currentDate;
     }
 
     private getEvents() {
-        this.http.get(this.apiURL + (this.currentDate.getMonth()+'/'+this.currentDate.getDay())).subscribe(result => {
+        this.http.get(this.apiURL + ((this.currentDate.getMonth()+1)+'/'+this.currentDate.getDate())).subscribe(result => {
             this.spaceEvents = result.json() as SpaceEventGroup;
         }, error => console.error(error));
     }
@@ -47,14 +44,19 @@ export class HomeComponent {
         this.getEvents();
     }
 
-    public decrementMonth() {
+    public decrementDate() {
         this.currentDate.setDate(this.currentDate.getDate() - 1);
 
         this.setDate(this.currentDate);
         this.getEvents();
     }
 
-    public resetMonth() {
+    public jumpTo(month: number, day: number) {
+        this.setDate(new Date(this.currentDate.getFullYear(), month, day));
+        this.getEvents();
+    }
+
+    public resetDate() {
         this.setDate();
         this.getEvents();
     }

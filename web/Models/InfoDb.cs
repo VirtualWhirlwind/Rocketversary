@@ -111,7 +111,7 @@ namespace web.Models
                         NewTarget = string.Format(MONTH_DAY_FORMAT, CheckDate.Month, CheckDate.Day);
                     }
                     PrevDay = PreviousNext[NewTarget].Previous;
-                    NextDay = PreviousNext[NewTarget].Next;
+                    NextDay = NewTarget;
                     PreviousNext.Add(Target, new PrevNext(){ Previous=PrevDay, Next=NextDay});
                 }
 

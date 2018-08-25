@@ -12,12 +12,12 @@ export interface SpaceEvent {
 }
 
 export interface SpaceEventGroup {
-    previous: SpaceEvent;
-    previousCount: number;
+    previous?: SpaceEvent;
+    previousCount?: number;
 
-    current: SpaceEvent[];
-    currentCount: number;
+    current?: SpaceEvent[];
+    currentCount?: number;
 
-    next: SpaceEvent;
-    nextCount: number;
+    next?: SpaceEvent;
+    nextCount?: number;
 }
