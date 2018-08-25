@@ -10,3 +10,14 @@ export interface SpaceEvent {
     genericDate: string;
     convenienceDate: Date;
 }
+
+export interface SpaceEventGroup {
+    previous: SpaceEvent;
+    previousCount: number;
+
+    current: SpaceEvent[];
+    currentCount: number;
+
+    next: SpaceEvent;
+    nextCount: number;
+}

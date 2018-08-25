@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import { SpaceEvent } from '../interfaces/interfaces.component';
+import { SpaceEventGroup } from '../interfaces/interfaces.component';
 
 @Component({
     selector: 'home',
@@ -9,10 +9,9 @@ import { SpaceEvent } from '../interfaces/interfaces.component';
 export class HomeComponent {
     public apiURL: string = '';
     public http: Http;
-    public spaceEvents: SpaceEvent[] = [];
-    public currentMonth: number = 0;
-    public currentMonthName: string = 'None';
-    public currentDay: number = 0;
+    public spaceEvents: SpaceEventGroup = { previous=null, previousCount=0, current=null, currentCount=0, next=null, nextCount=0 };
+    public currentDate: Date = new Date();
+    public currentDateDisplay: string = 'None';
     public dateFormat: string = 'yyyy-MM-dd';
     public dateFormats: string[];
 
@@ -22,46 +21,41 @@ export class HomeComponent {
 
         this.dateFormats = ["yyyy-MM-dd", "MM/dd/yyyy"];
 
-        this.setMonth();
+        this.setDate();
         this.getEvents();
     }
 
-    private setMonth(withMonth?: number) {
-        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        if (withMonth == undefined) {
-            var now = new Date();
-            this.currentMonth = now.getMonth();
+    private setDate(withDate?: Date) {
+        if (withDate == undefined) {
+            this.currentDate = new Date();
         }
-        else if (withMonth != this.currentMonth) { this.currentMonth = withMonth; }
+        else if (withDate != this.currentDate) { this.currentDate = withDate; }
 
-        this.currentMonthName = monthNames[this.currentMonth];
+        this.currentDateDisplay = this.currentDate;
     }
 
     private getEvents() {
-        this.http.get(this.apiURL + (this.currentMonth + 1)).subscribe(result => {
-            this.spaceEvents = result.json() as SpaceEvent[];
+        this.http.get(this.apiURL + (this.currentDate.getMonth()+'/'+this.currentDate.getDay())).subscribe(result => {
+            this.spaceEvents = result.json() as SpaceEventGroup;
         }, error => console.error(error));
     }
 
-    public incrementMonth() {
-        this.currentMonth++;
-        if (this.currentMonth > 11) { this.currentMonth = 0; }
+    public incrementDate() {
+        this.currentDate.setDate(this.currentDate.getDate() + 1);
 
-        this.setMonth(this.currentMonth);
+        this.setDate(this.currentDate);
         this.getEvents();
     }
 
     public decrementMonth() {
-        this.currentMonth--;
-        if (this.currentMonth < 0) { this.currentMonth = 11; }
+        this.currentDate.setDate(this.currentDate.getDate() - 1);
 
-        this.setMonth(this.currentMonth);
+        this.setDate(this.currentDate);
         this.getEvents();
     }
 
     public resetMonth() {
-        this.setMonth();
+        this.setDate();
         this.getEvents();
     }
 
