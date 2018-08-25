@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
+import { MonthComponent } from './components/month/month.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ContactComponent } from './components/contact/contact.component';
         AppComponent,
         NavMenuComponent,
         ContactComponent,
+        MonthComponent,
         HomeComponent
     ],
     imports: [
@@ -23,6 +25,7 @@ import { ContactComponent } from './components/contact/contact.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'month', component: MonthComponent },
             { path: 'contact', component: ContactComponent },
             { path: '**', redirectTo: 'home' }
         ])

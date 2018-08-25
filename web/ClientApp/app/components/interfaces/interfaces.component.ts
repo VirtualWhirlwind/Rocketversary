@@ -8,4 +8,5 @@ export interface SpaceEvent {
     month: number;
     day: number;
     genericDate: string;
+    convenienceDate: Date;
 }

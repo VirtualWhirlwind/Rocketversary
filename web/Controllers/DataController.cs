@@ -42,6 +42,20 @@ namespace web.Controllers
             return null;
         }
 
+        [HttpGet("[action]/{month}/{day}")]
+        public IEnumerable<SpaceEvent> SpaceEventsForDay(int month, int day)
+        {
+            if (IDB == null || IDB.Data == null) { ReadData(); }
+
+            if (IDB != null && IDB.Data != null)
+            {
+                var Target = new DateTime(DateTime.Now.Year, month, day);
+                return IDB.Data.Where(i => i.ConvenienceDate >= Target.AddDays(-1) && i.ConvenienceDate <= Target.AddDays(1));
+            }
+
+            return null;
+        }
+
         protected void ReadData()
         {
             IDB = new InfoDb();
@@ -73,6 +87,8 @@ namespace web.Controllers
             public int Month { get { return Date.Month; } }
             public int Day { get { return Date.Day; } }
             public string GenericDate { get { return Date.ToString("yyyy-MM-dd"); } }
+
+            public DateTime ConvenienceDate { get { var Result = new DateTime(DateTime.Now.Year, Date.Month, Date.Day, Date.Hour, Date.Minute, Date.Second); return Result; } }
         }
 
         public class SpaceEventComparer : IComparer<SpaceEvent>

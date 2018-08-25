@@ -3,21 +3,20 @@ import { Http } from '@angular/http';
 import { SpaceEvent } from '../interfaces/interfaces.component';
 
 @Component({
-    selector: 'home',
-    templateUrl: './home.component.html'
+    selector: 'month',
+    templateUrl: './month.component.html'
 })
-export class HomeComponent {
+export class MonthComponent {
     public apiURL: string = '';
     public http: Http;
     public spaceEvents: SpaceEvent[] = [];
     public currentMonth: number = 0;
     public currentMonthName: string = 'None';
-    public currentDay: number = 0;
     public dateFormat: string = 'yyyy-MM-dd';
     public dateFormats: string[];
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        this.apiURL = baseUrl + 'api/Data/SpaceEventsForDay/';
+        this.apiURL = baseUrl + 'api/Data/SpaceEventsForMonth/';
         this.http = http;
 
         this.dateFormats = ["yyyy-MM-dd", "MM/dd/yyyy"];

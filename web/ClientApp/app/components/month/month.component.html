@@ -1,0 +1,27 @@
+<h1>Space Events For: {{ currentMonthName }}</h1>
+<div>
+    <button (click)="decrementMonth()">Previous</button>
+    <button (click)="resetMonth()">Current</button>
+    <button (click)="incrementMonth()">Next</button>
+</div>
+
+<div>
+    <button (click)="setDateFormat(0)">Date Format: YYYY-MM-DD</button>
+    <button (click)="setDateFormat(1)">Date Format: MM/DD/YYYY</button>
+</div>
+
+<div class="container">
+    <div class="row" *ngIf="!spaceEvents">
+        <div class="col-md-4"><p><em>Loading...</em></p></div>
+    </div>
+    <div class="row" *ngIf="spaceEvents">
+        <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents">
+            <h3>{{ spaceEvent.name }}</h3>
+            <h5>{{ spaceEvent.subtitle }}</h5>
+            <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
+            <b>Country: </b>{{ spaceEvent.country }}<br />
+            <br />
+            <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
+        </div>
+    </div>
+</div>
