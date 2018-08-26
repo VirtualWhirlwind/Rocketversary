@@ -110,8 +110,9 @@ namespace web.Models
                         CheckDate = CheckDate.AddDays(1);
                         NewTarget = string.Format(MONTH_DAY_FORMAT, CheckDate.Month, CheckDate.Day);
                     }
+
                     PrevDay = PreviousNext[NewTarget].Previous;
-                    NextDay = NewTarget;
+                    if (Organized.ContainsKey(NewTarget)) { NextDay = NewTarget; } else { NextDay = PreviousNext[NewTarget].Next; }
                     PreviousNext.Add(Target, new PrevNext(){ Previous=PrevDay, Next=NextDay});
                 }
 

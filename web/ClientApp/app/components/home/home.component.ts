@@ -38,14 +38,18 @@ export class HomeComponent {
     }
 
     public incrementDate() {
-        this.currentDate.setDate(this.currentDate.getDate() + 1);
+        var tmpDate = this.currentDate;
+        tmpDate.setDate(tmpDate.getDate() + 1);
+        this.currentDate = tmpDate;
 
         this.setDate(this.currentDate);
         this.getEvents();
     }
 
     public decrementDate() {
-        this.currentDate.setDate(this.currentDate.getDate() - 1);
+        var tmpDate = this.currentDate;
+        tmpDate.setDate(tmpDate.getDate() - 1);
+        this.currentDate = tmpDate;
 
         this.setDate(this.currentDate);
         this.getEvents();
