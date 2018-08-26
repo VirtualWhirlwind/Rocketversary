@@ -23,5 +23,13 @@
             <br />
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
+        <div class="col-md-4" *ngIf="!spaceEvents.length">
+            <h3>No Anniversaries in the Database</h3>
+            <h5>...</h5>
+            <b>Date: </b>...<br />
+            <b>Country: </b>...<br />
+            <br />
+            <a [routerLink]="['/contact']" target="_blank">Submit!</a>
+        </div>
     </div>
 </div>

@@ -38,7 +38,7 @@ export class HomeComponent {
     }
 
     public incrementDate() {
-        var tmpDate = this.currentDate;
+        var tmpDate = new Date(this.currentDate);
         tmpDate.setDate(tmpDate.getDate() + 1);
         this.currentDate = tmpDate;
 
@@ -47,7 +47,7 @@ export class HomeComponent {
     }
 
     public decrementDate() {
-        var tmpDate = this.currentDate;
+        var tmpDate = new Date(this.currentDate);
         tmpDate.setDate(tmpDate.getDate() - 1);
         this.currentDate = tmpDate;
 
