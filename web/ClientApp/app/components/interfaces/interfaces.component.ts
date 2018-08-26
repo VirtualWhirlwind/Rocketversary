@@ -4,6 +4,7 @@ export interface SpaceEvent {
     country: string;
     date: Date;
     url: string;
+    description: string;
     year: number;
     month: number;
     day: number;

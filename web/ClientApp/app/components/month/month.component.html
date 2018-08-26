@@ -20,7 +20,8 @@
             <h5>{{ spaceEvent.subtitle }}</h5>
             <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
             <b>Country: </b>{{ spaceEvent.country }}<br />
-            <br />
+            <b>Description:</b><br />
+            {{ spaceEvent.description }}<br />
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
         <div class="col-md-4" *ngIf="!spaceEvents.length">
@@ -28,7 +29,8 @@
             <h5>...</h5>
             <b>Date: </b>...<br />
             <b>Country: </b>...<br />
-            <br />
+            <b>Description:</b><br />
+            ...<br />
             <a [routerLink]="['/contact']" target="_blank">Submit!</a>
         </div>
     </div>

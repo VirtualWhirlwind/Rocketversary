@@ -15,38 +15,30 @@
         <div class="col-md-4"><p><em>Loading...</em></p></div>
     </div>
     <div class="row" *ngIf="spaceEvents.previous">
-        <div class="col-md-4">
-            <h3>Previous: {{ spaceEvents.previous.name }}</h3>
-            <h5>{{ spaceEvents.previous.subtitle }}</h5>
-            <b>Date: </b>{{ spaceEvents.previous.date | date: dateFormat }}<br />
-            <b>Country: </b>{{ spaceEvents.previous.country }}<br />
-            <br />
-            <a href="{{ spaceEvents.previous.url }}" target="_blank">Learn More!</a><br />
+        <div class="col-md-2">
+            <h4><strong>Previous:</strong><br />{{ spaceEvents.previous.name }}</h4>
             <button (click)="jumpTo(spaceEvents.previous.month-1, spaceEvents.previous.day)">Jump To...</button>
         </div>
-        <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents.current">
+        <div class="col-md-6" *ngFor="let spaceEvent of spaceEvents.current">
             <h3>{{ spaceEvent.name }}</h3>
             <h5>{{ spaceEvent.subtitle }}</h5>
             <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
             <b>Country: </b>{{ spaceEvent.country }}<br />
-            <br />
+            <b>Description:</b><br />
+            {{ spaceEvent.description }}<br />
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
-        <div class="col-md-4" *ngIf="!spaceEvents.current">
+        <div class="col-md-6" *ngIf="!spaceEvents.current">
             <h3>No Anniversaries in the Database</h3>
             <h5>...</h5>
             <b>Date: </b>...<br />
             <b>Country: </b>...<br />
-            <br />
+            <b>Description:</b><br />
+            ...<br />
             <a [routerLink]="['/contact']" target="_blank">Submit!</a>
         </div>
-        <div class="col-md-4">
-                <h3>Next: {{ spaceEvents.next.name }}</h3>
-                <h5>{{ spaceEvents.next.subtitle }}</h5>
-                <b>Date: </b>{{ spaceEvents.next.date | date: dateFormat }}<br />
-                <b>Country: </b>{{ spaceEvents.next.country }}<br />
-                <br />
-                <a href="{{ spaceEvents.next.url }}" target="_blank">Learn More!</a><br />
+        <div class="col-md-2">
+                <h4><strong>Next:</strong><br />{{ spaceEvents.next.name }}</h4>
                 <button (click)="jumpTo(spaceEvents.next.month-1, spaceEvents.next.day)">Jump To...</button>
             </div>
         </div>

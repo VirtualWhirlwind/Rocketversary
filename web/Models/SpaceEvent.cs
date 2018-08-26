@@ -10,6 +10,7 @@ namespace web.Models
         public string Country { get; set; }
         public DateTime Date { get; set; }
         public string URL { get; set; }
+        public string Description { get; set; }
 
         public int Year { get { return Date.Year; } }
         public int Month { get { return Date.Month; } }
