@@ -52,6 +52,19 @@ namespace web.Controllers
             return null;
         }
 
+        [HttpGet("[action]/{query}")]
+        public SpaceEventGroup SpaceEventsSearch(string query)
+        {
+            if (IDB == null) { ReadData(); }
+
+            if (IDB != null)
+            {
+                //return IDB.ForDay(month, day);
+            }
+
+            return null;
+        }
+
         protected void ReadData()
         {
             IDB = new InfoDb();

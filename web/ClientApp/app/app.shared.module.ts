@@ -8,6 +8,7 @@ import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { MonthComponent } from './components/month/month.component';
+import { SearchComponent } from './components/search/search.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ContactComponent } from './components/contact/contact.component';
         AppComponent,
         NavMenuComponent,
         ContactComponent,
+        SearchComponent,
         MonthComponent,
         HomeComponent
     ],
@@ -26,6 +28,7 @@ import { ContactComponent } from './components/contact/contact.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'month', component: MonthComponent },
+            { path: 'search', component: SearchComponent },
             { path: 'contact', component: ContactComponent },
             { path: '**', redirectTo: 'home' }
         ])
