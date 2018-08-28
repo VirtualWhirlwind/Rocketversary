@@ -10,11 +10,13 @@ import { HomeComponent } from './components/home/home.component';
 import { MonthComponent } from './components/month/month.component';
 import { SearchComponent } from './components/search/search.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { LinksComponent } from './components/links/links.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
+        LinksComponent,
         ContactComponent,
         SearchComponent,
         MonthComponent,
@@ -30,6 +32,7 @@ import { ContactComponent } from './components/contact/contact.component';
             { path: 'month', component: MonthComponent },
             { path: 'search', component: SearchComponent },
             { path: 'contact', component: ContactComponent },
+            { path: 'links', component: LinksComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

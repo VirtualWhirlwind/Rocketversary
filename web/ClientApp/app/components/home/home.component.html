@@ -29,13 +29,8 @@
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
         <div class="col-md-6" *ngIf="!spaceEvents.current">
-            <h3>No Anniversaries in the Database</h3>
-            <h5>...</h5>
-            <b>Date: </b>...<br />
-            <b>Country: </b>...<br />
-            <b>Description:</b><br />
-            ...<br />
-            <a [routerLink]="['/contact']" target="_blank">Submit!</a>
+            <h3>No Anniversaries in the Database for Today</h3>
+            <a [routerLink]="['/contact']" target="_blank">Help by Submiting!</a>
         </div>
         <div class="col-md-2">
                 <h4><strong>Next:</strong><br />{{ spaceEvents.next.name }}</h4>
