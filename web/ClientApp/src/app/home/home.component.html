@@ -19,7 +19,7 @@
             <h4><strong>Previous:</strong><br />{{ spaceEvents.previous.name }}</h4>
             <button (click)="jumpTo(spaceEvents.previous.month-1, spaceEvents.previous.day)">Jump To...</button>
         </div>
-        <div class="col-md-6" *ngFor="let spaceEvent of spaceEvents.current">
+        <div class="col-md-4" *ngFor="let spaceEvent of spaceEvents.current">
             <h3>{{ spaceEvent.name }}</h3>
             <h5>{{ spaceEvent.subtitle }}</h5>
             <b>Date: </b>{{ spaceEvent.date | date: dateFormat }}<br />
@@ -28,7 +28,7 @@
             {{ spaceEvent.description }}<br />
             <a href="{{ spaceEvent.url }}" target="_blank">Learn More!</a>
         </div>
-        <div class="col-md-6" *ngIf="!spaceEvents.current">
+        <div class="col-md-4" *ngIf="!spaceEvents.current">
             <h3>No Anniversaries in the Database for Today</h3>
             <a [routerLink]="['/contact']" target="_blank">Help by Submiting!</a>
         </div>
